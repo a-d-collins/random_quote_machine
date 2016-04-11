@@ -40,16 +40,18 @@ function callback(data){
     var rows = [];
     var cells = data.feed.entry;
     
-    for (var i = 0; i < cells.length; i++){
+    cells.forEach(function(individualCell) {
         var rowObj = {};
-        rowObj.title = cells[i].title.$t;
-        var rowCols = cells[i].content.$t.split(', fq');
-        for (var j = 0; j < rowCols.length; j++){
-            var keyVal = rowCols[j].split('qq:');
+        rowObj.title = individualCell.title.$t;
+        var rowCols = individualCell.content.$t.split(', fq');
+        
+        rowCols.forEach(function(individualCol) {
+            var keyVal = individualCol.split('qq:');
             rowObj[keyVal[0].trim()] = keyVal[1].trim();
-        }
+        });
+        
         rows.push(rowObj);
-    }
+    });
     
     //var raw = document.getElementById("demo");
     //raw.innerText = JSON.stringify(rows);

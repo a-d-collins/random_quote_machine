@@ -1,6 +1,10 @@
 A Pen created at CodePen.io. You can find this one at http://codepen.io/a-d-collins/pen/BjGvJY.
 
- Random_Quote_Machine_v.1.5.2
+ Random_Quote_Machine_v.1.5.3
+ 
+1.5.3:
+-- TODO: Remove unnecessary twitter script in <head>
+-- TODO: Clean up callback function (in javascript file) by replacing for-loops with forEach statements
  
 1.5.2:
 -- TODO: Link to twitter and facebook
