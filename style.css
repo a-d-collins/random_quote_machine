@@ -5,10 +5,11 @@
 }
 
 #home-contents {
-  position: relative;
+    position: relative;
     display: inline-block;
-  width: 50%;
-  border-radius: 10px;
+    width: 50%;
+    border-radius: 10px;
+    margin-bottom: 50px;
 }
 
 h3, h5, .quoteButtons {
@@ -59,16 +60,16 @@ h3, h5, .quoteButtons {
     text-decoration: none;
 }
 
-#twitter_button, #fb_button, #randomQuoteButton {
+.quoteButtons {
   color: white;
 }
 
-body, .quoteButtons, #randomQuoteButton {
-    background-color:coral;
+body, .quoteButtons {
+    background-color: cadetblue;
 }
 
 #home-contents {
-    color: coral;
+    color: cadetblue;
 }
 
 /* @media events may be needed at some point
