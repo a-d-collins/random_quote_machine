@@ -2,7 +2,7 @@
     1. GENERATE THE DATABASE OF MOVIE QUOTES FROM GOOGLE SPREADSHEET DATA
     2. GENERATE RANDOM QUOTE EACH TIME A BUTTON IS CLICKED
     
-    Credit for spreadsheet database idea goes to Cris Noble: http://kovalent.co/blog/google-docs-as-a-backend/
+    Credit for spreadsheet database --> Cris Noble: http://kovalent.co/blog/google-docs-as-a-backend/
 */
 // JSONURL containing movie quote data
 var JSONURL = 'https://spreadsheets.google.com/feeds/list/1OEnWaZT7h4JygNfIWS74ONb6rEi80ZUKVncSfCua8aM/1/public/basic?alt=json';
@@ -40,7 +40,7 @@ function randomQuote() {
     if ($("#quote").html() === database[randomNumber].quote) {
         return randomQuote();
     }
-    return database[randomNumber].quote;
+    return database[randomNumber];
 }
 
 // on page launch: 1. calls database-forming function AND 2. waits for random-quote button to be clicked
@@ -57,7 +57,9 @@ $(document).ready(function(){
     });
 
     $('#randomQuoteButton').click(function(){
-        $("#quote").text(randomQuote);
+        var datum = randomQuote();
+        $("#quote").html(datum.quote);
+        $("#movie_year").html(datum.movie + ' - ' + datum.year);
     });
 
 });

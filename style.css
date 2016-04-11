@@ -1,0 +1,50 @@
+.outermostContainer {
+  padding: 0px;
+}
+
+.body {
+  background-color: #BCD2EE;
+  height: 720px;
+  margin: auto;
+  text-align: center;
+}
+
+@media (max-width: 797px) {
+  body {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+#navBar-collapse-main {
+  padding-top: 5px;
+}
+
+#about {
+  position: relative;
+  height: 720px;
+  width: 100%;
+  background: url(https://scontent-lga3-1.xx.fbcdn.net/hphotos-xfa1/t31.0-8/11141732_10204131590956456_2390753024293712340_o.jpg) no-repeat center center fixed;
+  background-size: cover;
+  padding-top: 51px;
+}
+
+#home-contents-container, .about-contents-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  color: #1a1a1a;
+}
+
+#about-contents-left {
+  display: inline-block;
+  length: 400px;
+  width: 50%;
+  min-width: 50%;
+  max-width: 80%;
+  vertical-align: middle;
+  opacity: .8;
+  margin-top: 110px;
+  margin-right: 20px;
+  border-radius: 10px;
+}
