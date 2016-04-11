@@ -2,89 +2,36 @@
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Random_Quote_Machine_v.1.2</title>
-    <meta charset="UTF-8">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-      <title>Random_Quote_Machine_v.1</title>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-      <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css'>
-      <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/cerulean/bootstrap.min.css'>
-      <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-      <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
-      <script src="js/index.js"></script>
-    
-    
-    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css'>
-<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/cerulean/bootstrap.min.css'>
-
-    
-    
-    
-    
+    <title>Random_Quote_Machine_v-1-4</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css'>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
   </head>
 
-  <body>
-      <div class="container-fluid outermostContainer">
-      <nav id="scroll-spy" class="navbar navbar-default navbar-fixed-top">
-    <!-- This should contain a 
-   1) DONE Outer container-fluid (div) for nav bar
-   2) DONE Inner container (div) for nav bar
-   3) DONE An <a> thing containing a hyperlink to A's Github profile
-   4) DONE An unordered list of links to different areas of the page (see Wikipedia for good implementations of this feature)-->
-    <div class="navHeader container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button id="nav-toggle-button" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navBar-collapse-main" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="https://github.com/a-d-collins" target="_blank">A Collins</a>
-      </div>
-
-      <!-- Collect the nav links and other content for toggling -->
-      <div id="navBar-collapse-main" class="collapse navbar-collapse">
-        <ul class="nav nav-pills navbar-right">
-          <li class="active"><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      <!-- /.navbar-collapse -->
+  <body data-offset="50">
+<div class="container-fluid outermostContainer">
+  <div id="home-contents" class="well">
+      <h3><i class="fa fa-quote-left"></i>  <span id="quote">Default Quote</span>   <i class="fa fa-quote-right"></i></h3>
+      <h5 id="source_and_year">Default movie - year</h5>
+      <ul id="social-media-buttons">
+        <li class="social-media"><a id="twitter_button" class="quoteButtons" href="#"><i class="fa fa-twitter"></i></a></li>
+        <li class="social-media"><a id="fb_button" class="quoteButtons" href="#"><i class="fa fa-facebook"></i></a></li>
+      </ul>
+      <a id="randomQuoteButton" class="quoteButtons" href="#">New Quote</a>
     </div>
-    <!-- /.container-fluid -->
-  </nav>
-  
-        <div id="about" class="body">
-    <!-- Contains:
-     1) Description (left)
-     2) Picture (right) -->
-
-        <div id="about-contents-left" class="well">
-            <h1>Hello World!</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce imperdiet, velit non dapibus ultrices, urna tellus dapibus purus, sit amet feugiat risus tortor pulvinar justo. Integer in massa interdum tortor molestie ullamcorper pulvinar eget lacus.
-        Duis et bibendum nibh. Quisque in luctus dolor, non sollicitudin ex. Donec facilisis ornare blandit. Aliquam erat volutpat. Maecenas orci nunc, lobortis nec varius rhoncus, fringilla eget justo. Morbi rhoncus arcu sed euismod congue. Suspendisse
-        potenti.
-
-            </p>
-        </div>
-        <!-- about-contents-left -->
-        </div>
-      
-      
-    <div>
-  <button id="randomQuoteButton">Random Quote</button>
-  <h1 id="quote">Pups</h1>
-  <h5 id="movie_year">pup</h5>
-  
+    <!-- about-contents-left -->
+  <div class="bottomBar">
+    <div id="bottom-bar-content">
+      <p id="bottom-bar-text"><a href="#">by A</a>
+        <br>Copyright (c) 2016</p>
+    </div>
+  </div>
 </div>
-<p id="demo"></p>
-
-      </div>
-
-    
-  </body>
+</body>
 </html>

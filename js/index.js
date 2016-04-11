@@ -1,65 +1,52 @@
-/* Goals:
-    1. GENERATE THE DATABASE OF MOVIE QUOTES FROM GOOGLE SPREADSHEET DATA
-    2. GENERATE RANDOM QUOTE EACH TIME A BUTTON IS CLICKED
-    
-    Credit for spreadsheet database --> Cris Noble: http://kovalent.co/blog/google-docs-as-a-backend/
-*/
-// JSONURL containing movie quote data
-var JSONURL = 'https://spreadsheets.google.com/feeds/list/1OEnWaZT7h4JygNfIWS74ONb6rEi80ZUKVncSfCua8aM/1/public/basic?alt=json';
+  // START nav-pills collapse
+  // See link for explanation regarding nav-pills collapse code: http://stackoverflow.com/questions/23109704/makes-nav-pills-collapsable-just-like-nav-bar-in-bootstrap
+  //Stack menu when collapsed
+  $('#navBar-collapse-main').on('show.bs.collapse', function() {
+    $('.nav-pills').addClass('nav-stacked');
+  });
 
-// database storage variable
-var database;
+  //Unstack menu when not collapsed
+  $('#navBar-collapse-main').on('hidden.bs.collapse', function() {
+    $('.nav-pills').removeClass('nav-stacked');
+  });
+  // END nav-pills collapse
 
-// callback() calls data from spreadsheet
-function callback(data){
-    var rows = [];
-    var cells = data.feed.entry;
-    
-    for (var i = 0; i < cells.length; i++){
-        var rowObj = {};
-        rowObj.quote = cells[i].title.$t;
-        var rowCols = cells[i].content.$t.split(', mq');
-        for (var j = 0; j < rowCols.length; j++){
-            var keyVal = rowCols[j].split(':');
-            rowObj[keyVal[0].trim()] = keyVal[1].trim();
-        }
-        rows.push(rowObj);
+  // START nav-pills selection
+  // END nav-pills
+
+  // START #about-contents-left width adjustment
+  //Uncompress when navbar collapsed
+  $(window).resize(function() {
+    if ($(window).width() < 768) {
+      $('#about-contents-right').hide();
+    } else {
+      $('#about-contents-right').show();
     }
-    
-    //var raw = document.getElementById("demo");
-    //raw.innerText = JSON.stringify(rows);
-    //document.body.appendChild(raw);
-    return rows;
-}
+  });
 
-// returns random quote from newly-stored database
-function randomQuote() {
-    var randomNumber = Math.floor((Math.random() * database.length));
-    
-    // This if statement prevents the same quote from appearing twice in a row
-    if ($("#quote").html() === database[randomNumber].quote) {
-        return randomQuote();
+  //Compress when not collapsed
+  // END about-contents-left width adjustment
+
+  // Change navbar buttons when selected
+  /* Found here: http://stackoverflow.com/questions/16072421/twitter-bootstrap-tabs-active-class-toggle-not-working*/
+  $('ul.nav-pills li a').click(function() {
+    $('ul.nav-pills li.active').removeClass('active')
+    $(this).parent('li').addClass('active')
+  });
+
+  // Change navbar pills as you scroll
+  /* Not necessary, when running in codepen
+  $('body').scrollspy({ target: '#scroll-spy' });
+  */
+
+  /* THIS JAVASCRIPT'S ROLE HAS BEEN TAKEN OVER BY CSS:hover actions...
+  // START hover effect on project-picture
+  $('.overlay').hover(
+    function() {
+      $(this).addClass('active-picture');
+    },
+    function() {
+      $(this).removeClass('active-picture');
     }
-    return database[randomNumber];
-}
-
-// on page launch: 1. calls database-forming function AND 2. waits for random-quote button to be clicked
-$(document).ready(function(){
-    
-    $.ajax({
-        url:JSONURL,
-        success: function(data){
-            database = callback(data);
-            //var raw = document.getElementById("quote");
-            //raw.innerText = JSON.stringify(database[1].quote);
-            //document.body.appendChild(raw);
-        }
-    });
-
-    $('#randomQuoteButton').click(function(){
-        var datum = randomQuote();
-        $("#quote").html(datum.quote);
-        $("#movie_year").html(datum.movie + ' - ' + datum.year);
-    });
-
-});
+  );
+  // END hover effect on project picture*/

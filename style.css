@@ -1,50 +1,124 @@
 .outermostContainer {
   padding: 0px;
+  margin-top: 130px;
+    text-align: center;
 }
 
-.body {
-  background-color: #BCD2EE;
-  height: 720px;
-  margin: auto;
-  text-align: center;
+#home-contents {
+  position: relative;
+    display: inline-block;
+  width: 50%;
+  border-radius: 10px;
 }
 
-@media (max-width: 797px) {
-  body {
-    padding-left: 0px;
-    padding-right: 0px;
+h3, h5, .quoteButtons {
+  font-family: 'Droid Serif', serif;
+}
+
+#source_and_year {
+  display: inline-block;
+  text-align: right;
+  margin-bottom: 60px;
+  width: 90%;
+}
+
+#social-media-buttons {
+    list-style: none;
+    position: absolute;
+    left: -8px;
+    bottom: 15px;
+    color: white;
+}
+
+.social-media {
+    position: relative;
+    display: inline-block;
+    border-radius: 5px;
+    height: 40px;
+    width: 40px;
+    margin-left: 5px;
+}
+
+.quoteButtons {
+    display: block;
+    height: 100%;
+    width: 100%;
+    font-size: 30px;
+    border-radius: 5px;
+}
+
+#randomQuoteButton {
+    position: absolute;
+    right: 37px;
+    bottom: 25px;
+    border-radius: 5px;
+    height: 40px;
+    width: 120px;
+    font-size: 20px;
+    padding-top: 5px;
+    text-decoration: none;
+}
+
+#twitter_button, #fb_button, #randomQuoteButton {
+  color: white;
+}
+
+body, .quoteButtons, #randomQuoteButton {
+    background-color:coral;
+}
+
+#home-contents {
+    color: coral;
+}
+
+/* @media events may be needed at some point
+
+@media only screen and (min-width: 400px) {
+  #project-container {
+    width: 300px;
+  }
+  a div {
+    width: 200px
   }
 }
 
-#navBar-collapse-main {
-  padding-top: 5px;
+@media only screen and (min-width: 600px) {
+  #project-container {
+    width: 550px;
+  }
 }
 
-#about {
-  position: relative;
-  height: 720px;
+@media only screen and (min-width: 872px) {
+  #project-container {
+    width: 830px;
+  }
+}*/
+
+
+.btn-stack-container {
+    display: inline-block;
+    width: auto;
+}
+
+.contact-btn-stack {
+  display: block;
+  margin: 15px;
+}
+
+#header {}
+
+.bottomBar {
+  position: fixed;
+  bottom: 0;
   width: 100%;
-  background: url(https://scontent-lga3-1.xx.fbcdn.net/hphotos-xfa1/t31.0-8/11141732_10204131590956456_2390753024293712340_o.jpg) no-repeat center center fixed;
-  background-size: cover;
-  padding-top: 51px;
+  height: 50px;
+  background-color: #e6e6e6;
+  text-align: center;
 }
 
-#home-contents-container, .about-contents-container {
-  position: relative;
-  height: 100%;
+#bottom-bar-content {
+  position: absolute;
+  left: 0%;
+  top: 5%;
   width: 100%;
-  color: #1a1a1a;
-}
-
-#about-contents-left {
-  display: inline-block;
-  length: 400px;
-  width: 50%;
-  min-width: 50%;
-  max-width: 80%;
-  vertical-align: middle;
-  opacity: .8;
-  margin-top: 110px;
-  margin-right: 20px;
-  border-radius: 10px;
 }
