@@ -15,21 +15,41 @@
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>-->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="js/index.js"></script>
+    <!-- Twitter script -->
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
   </head>
 
   <body data-offset="50">
+      <script>
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId      : '1676014795974337',
+              xfbml      : true,
+              version    : 'v2.5'
+            });
+          };
+
+          (function(d, s, id){
+             var js, fjs = d.getElementsByTagName(s)[0];
+             if (d.getElementById(id)) {return;}
+             js = d.createElement(s); js.id = id;
+             js.src = "//connect.facebook.net/en_US/sdk.js";
+             fjs.parentNode.insertBefore(js, fjs);
+           }(document, 'script', 'facebook-jssdk'));
+        </script>
 <div class="container-fluid outermostContainer">
   <div id="home-contents" class="well">
       <h3><i class="fa fa-quote-left"></i>  <span id="quote">--------------</span>   <i class="fa fa-quote-right"></i></h3>
       <h5 id="source_and_year"></h5>
       <ul id="social-media-buttons">
-        <li class="social-media"><a id="twitter_button" class="quoteButtons" href="#"><i class="fa fa-twitter"></i></a></li>
+        <li class="social-media"><a id="twitter_button" class="quoteButtons" href="https://twitter.com/share" target="_blank" data-text="Hello World!"><i class="fa fa-twitter"></i></a></li>
         <li class="social-media"><a id="fb_button" class="quoteButtons" href="#"><i class="fa fa-facebook"></i></a></li>
-        <li class="social-media"><a id="tumblr_button" class="quoteButtons" href="#"><i class="fa fa-tumblr"></i></a></li>
+        <!--<li class="social-media"><a id="tumblr_button" class="quoteButtons" href="#"><i class="fa fa-tumblr"></i></a></li>-->
       </ul>
       <a id="randomQuoteButton" class="quoteButtons" href="#">New Quote</a>
     </div>
     <!-- about-contents-left -->
+    
   <div class="bottomBar">
     <div id="bottom-bar-content">
       <p id="bottom-bar-text"><a href="#">by A</a>

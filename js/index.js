@@ -7,8 +7,12 @@
 // JSONURL containing movie quote data
 var JSONURL = 'https://spreadsheets.google.com/feeds/list/1OEnWaZT7h4JygNfIWS74ONb6rEi80ZUKVncSfCua8aM/1/public/basic?alt=json';
 
-// database storage variable
+// database variable
 var database;
+// databaseIndex -- keeps track of most recently displayed quote
+var databaseIndex;
+// switchColor -- stores current color index for the goodColor function
+var switchColor;
 // Tracks the last 4 colors to make sure colors do not repeat too frequently
 var colorTracker = {
     colorTrackerIndex: 0,
@@ -17,7 +21,7 @@ var colorTracker = {
 
 function goodColor(numPossibleColors) {
     // Come up with new, random switchColor
-    var switchColor = Math.floor(Math.random() * numPossibleColors) + 1;
+    switchColor = Math.floor(Math.random() * numPossibleColors) + 1;
     // Check new switchColor against the recent 3 colors
     for (var i = 0; i < 3; i++) {
         if (switchColor === colorTracker.recentColors[i]) {
@@ -55,13 +59,13 @@ function callback(data){
 
 // returns random quote from newly-stored database
 function randomQuote() {
-    var randomNumber = Math.floor(Math.random() * database.length);
+    databaseIndex = Math.floor(Math.random() * database.length);
     
     // This if statement prevents the same quote from appearing twice in a row
-    if ($("#quote").html() === database[randomNumber].quote) {
+    if ($("#quote").html() === database[databaseIndex].quote) {
         return randomQuote();
     }
-    return database[randomNumber];
+    return database[databaseIndex];
 }
 
 // Returns random color
@@ -177,6 +181,30 @@ $(document).ready(function(){
         $("body, .quoteButtons").animate({
             backgroundColor: randoColor
         }, 1000 );
+    });
+    
+    /* Tweet the current quote, using the following example --> http://debugmode.net/2012/06/27/how-to-post-a-tweet-using-javascript/ */
+    $('#twitter_button').click(function () {
+        alert('tweeting...');
+        var textToTweet = database[databaseIndex].quote + " -- " + database[databaseIndex].source + ", " + database[databaseIndex].year;
+        if (textToTweet.length > 140) {
+            alert('Tweet should be less than 140 Chars');
+        }
+        else {
+            var twtLink = 'http://twitter.com/home?status=' +encodeURIComponent(textToTweet);
+            window.open(twtLink,'_blank');
+        }
+    });
+    
+    $('#fb_button').click(function () {
+        alert('fbing...');
+        FB.ui({
+            app_id: '1676014795974337',
+            method: 'feed',
+            link: 'http://127.0.0.1:52908/index.html#',
+            caption: 'Random_Quote_Machine',
+            description: database[databaseIndex].quote + " -- " + database[databaseIndex].source + ", " + database[databaseIndex].year
+        }, function(response){});
     });
 
 });
