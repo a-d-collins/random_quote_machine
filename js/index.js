@@ -53,9 +53,6 @@ function callback(data){
         rows.push(rowObj);
     });
     
-    //var raw = document.getElementById("demo");
-    //raw.innerText = JSON.stringify(rows);
-    //document.body.appendChild(raw);
     return rows;
 }
 
@@ -140,9 +137,7 @@ $(document).ready(function(){
         url:JSONURL,
         success: function(data){
             database = callback(data);
-            //var raw = document.getElementById("quote");
-            //raw.innerText = JSON.stringify(database[1].quote);
-            //document.body.appendChild(raw);
+            
             var startQuote = randomQuote();
             $("#quote").fadeOut(1000, function() {
                 $(this).text(startQuote.quote).fadeIn(1000);
@@ -161,13 +156,9 @@ $(document).ready(function(){
         $("#quote").fadeOut(1000, function() {
             $(this).text(datum.quote).fadeIn(1000);
         });
-        //$("#quote").html(datum.quote);
         $("#source_and_year").fadeOut(1000, function() {
             $(this).text(datum.source + ' - ' + datum.year).fadeIn(1300);
         });
-        //$("#source_and_year").html(datum.source + ' - ' + datum.year);
-        /* This works, but does not allow for a 'smooth transition' with the current jQuery
-        $('body').css("background-color", randomColor());*/
         /* animate the color transition with the help of:
         http://jqueryui.com/animate/
         AND
