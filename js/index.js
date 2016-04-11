@@ -9,6 +9,27 @@ var JSONURL = 'https://spreadsheets.google.com/feeds/list/1OEnWaZT7h4JygNfIWS74O
 
 // database storage variable
 var database;
+// Tracks the last 4 colors to make sure colors do not repeat too frequently
+var colorTracker = {
+    colorTrackerIndex: 0,
+    recentColors: [0, 0, 0]
+}
+
+function goodColor(numPossibleColors) {
+    // Come up with new, random switchColor
+    var switchColor = Math.floor(Math.random() * numPossibleColors) + 1;
+    // Check new switchColor against the recent 3 colors
+    for (var i = 0; i < 3; i++) {
+        if (switchColor === colorTracker.recentColors[i]) {
+            return goodColor(numPossibleColors);
+        }
+    }
+    // If the new color passes the test, add this color to the colorTracker list and increase the colorTrackerIndex
+    colorTracker.recentColors[colorTracker.colorTrackerIndex] = switchColor;
+    colorTracker.colorTrackerIndex = (colorTracker.colorTrackerIndex + 1) % 3;
+    
+    return switchColor;
+}
 
 // callback() calls data from spreadsheet
 function callback(data){
@@ -18,9 +39,9 @@ function callback(data){
     for (var i = 0; i < cells.length; i++){
         var rowObj = {};
         rowObj.title = cells[i].title.$t;
-        var rowCols = cells[i].content.$t.split(', mq');
+        var rowCols = cells[i].content.$t.split(', fq');
         for (var j = 0; j < rowCols.length; j++){
-            var keyVal = rowCols[j].split(':');
+            var keyVal = rowCols[j].split('qq:');
             rowObj[keyVal[0].trim()] = keyVal[1].trim();
         }
         rows.push(rowObj);
@@ -45,11 +66,14 @@ function randomQuote() {
 
 // Returns random color
 function randomColor() {
-    var numberOfColors = 5;
-    var randomNumber = Math.floor(Math.random() * numberOfColors) + 1;
+    var numberOfColors = 15;
+    //var goodColorNumber = Math.floor(Math.random() * numberOfColors) + 1;
+    // Choose a color number while tracking and comparing to the recent colors
+    var goodColorNumber = goodColor(numberOfColors);
     var color;
     
-    switch (randomNumber) {
+    // List of colors. See following link for more: http://www.yellowpipe.com/yis/tools/hex-to-rgb/color-converter.php
+    switch (goodColorNumber) {
         // case 1 -- coral
         case 1: color = "rgb(255, 127, 80)";
             break;
@@ -65,26 +89,35 @@ function randomColor() {
         // case 5 -- cadetblue
         case 5: color = "rgb(95, 158, 160)";
             break;
-        // case 6 -- 
-        case 6: color = "";
+        // case 6 -- darkseagreen
+        case 6: color = "rgb(143, 188, 143)";
             break;
-        case 7: color = "";
+        // case 7 -- darkturquoise
+        case 7: color = "rgb(143, 188, 143)";
             break;
-        case 8: color = "";
+        // case 8 -- goldenrod
+        case 8: color = "rgb(218, 165, 32)";
             break;
-        case 9: color = "";
+        // case 9 -- lightpink
+        case 9: color = "rgb(255, 182, 193)";
             break;
-        case 10: color = "";
+        // case 10 -- lightskyblue
+        case 10: color = "rgb(135, 206, 250)";
             break;
-        case 11: color = "";
+        // case 11 -- mediumaquamarine
+        case 11: color = "rgb(102, 205, 170)";
             break;
-        case 12: color = "";
+        // case 12 -- olivedrab
+        case 12: color = "rgb(107, 142, 35)";
             break;
-        case 13: color = "";
+        // case 13 -- peru
+        case 13: color = "rgb(205, 133, 63)";
             break;
-        case 14: color = "";
+        // case 14 -- plum
+        case 14: color = "rgb(221, 160, 221)";
             break;
-        case 15: color = "";
+        // case 15 -- tomato
+        case 15: color = "rgb(255, 99, 71)";
             break;
     }
     if ($('body').css("background-color") === color) {
@@ -104,14 +137,29 @@ $(document).ready(function(){
             //var raw = document.getElementById("quote");
             //raw.innerText = JSON.stringify(database[1].quote);
             //document.body.appendChild(raw);
+            var startQuote = randomQuote();
+            $("#quote").fadeOut(1000, function() {
+                $(this).text(startQuote.quote).fadeIn(1000);
+            });
+            //$("#quote").html(datum.quote);
+            $("#source_and_year").fadeOut(1000, function() {
+                $(this).text(startQuote.source + ' - ' + startQuote.year).fadeIn(1000);
+            });
         }
     });
-
+    
     $('#randomQuoteButton').click(function(){
-        var datum = randomQuote();
         var randoColor = randomColor();
-        $("#quote").html(datum.quote);
-        $("#source_and_year").html(datum.source + ' - ' + datum.year);
+        
+        var datum = randomQuote();
+        $("#quote").fadeOut(1000, function() {
+            $(this).text(datum.quote).fadeIn(1000);
+        });
+        //$("#quote").html(datum.quote);
+        $("#source_and_year").fadeOut(1000, function() {
+            $(this).text(datum.source + ' - ' + datum.year).fadeIn(1300);
+        });
+        //$("#source_and_year").html(datum.source + ' - ' + datum.year);
         /* This works, but does not allow for a 'smooth transition' with the current jQuery
         $('body').css("background-color", randomColor());*/
         /* animate the color transition with the help of:
