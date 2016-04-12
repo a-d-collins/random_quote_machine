@@ -1,9 +1,3 @@
-/* Goals:
-    1. GENERATE THE DATABASE OF MOVIE QUOTES FROM GOOGLE SPREADSHEET DATA
-    2. GENERATE RANDOM QUOTE EACH TIME A BUTTON IS CLICKED
-    
-    Credit for spreadsheet database --> Cris Noble: http://kovalent.co/blog/google-docs-as-a-backend/
-*/
 // JSONURL containing movie quote data
 var JSONURL = 'https://spreadsheets.google.com/feeds/list/1OEnWaZT7h4JygNfIWS74ONb6rEi80ZUKVncSfCua8aM/1/public/basic?alt=json';
 
@@ -70,7 +64,6 @@ function randomQuote() {
 // Returns random color
 function randomColor() {
     var numberOfColors = 15;
-    //var goodColorNumber = Math.floor(Math.random() * numberOfColors) + 1;
     // Choose a color number while tracking and comparing to the recent colors
     var goodColorNumber = goodColor(numberOfColors);
     var color;
@@ -142,7 +135,7 @@ $(document).ready(function(){
             $("#quote").fadeOut(1000, function() {
                 $(this).text(startQuote.quote).fadeIn(1000);
             });
-            //$("#quote").html(datum.quote);
+            
             $("#source_and_year").fadeOut(1000, function() {
                 $(this).text(startQuote.source + ' - ' + startQuote.year).fadeIn(1000);
             });
@@ -156,9 +149,11 @@ $(document).ready(function(){
         $("#quote").fadeOut(1000, function() {
             $(this).text(datum.quote).fadeIn(1000);
         });
+        
         $("#source_and_year").fadeOut(1000, function() {
             $(this).text(datum.source + ' - ' + datum.year).fadeIn(1300);
         });
+        
         /* animate the color transition with the help of:
         http://jqueryui.com/animate/
         AND
